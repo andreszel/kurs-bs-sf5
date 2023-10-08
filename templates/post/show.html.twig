@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post show{% endblock %}
+
+{% block body %}
+    <h2 class="header-page">Post details</h2>
+    <div class="post">
+        <h5>{{ post.title }}</h5>
+        <small>[Category: {{ post.categoryPost }}]</small>
+        <p>{{ post.description }}</p>
+        <p class="post-details">
+            <span>Data dodania: {{ post.createdAt|date('Y-m-d H:i:s', 'Europe/Warsaw') }} </span>
+            <span>Ostatnia aktualizacja: {{ post.updatedAt|date('Y-m-d H:i:s', 'Europe/Warsaw') }} </span>
+        </p>
+        <div class="post-links">
+            <a href="{{ path('app_post_edit', {'slug': post.slug}) }}" class="btn btn-success btn-sm">edit</a>
+            <a href="{{ path('app_post_delete', {'slug': post.slug}) }}" class="btn btn-danger btn-sm">delete</a>
+            <a href="{{ path('app_post') }}" class="btn btn-primary btn-sm">Posts list</a>
+        </div>
+    </div>
+{% endblock %}

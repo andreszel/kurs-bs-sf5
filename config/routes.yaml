@@ -1,3 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+json_index:
+    path: /json
+    controller: App\Controller\HomeController::json_index

@@ -1,0 +1,9 @@
+parameters:
+    default_folder: 'templates'
+
+twig:
+    default_path: '%kernel.project_dir%/%default_folder%'
+
+when@test:
+    twig:
+        strict_variables: true

@@ -1,0 +1,3 @@
+# jeżeli będziemy w środowisku dev i utworzymy kontroler to widoki utworzą się w katalogu, który tutaj podaliśmy
+#parameters:
+#    default_folder: 'templates_dev'

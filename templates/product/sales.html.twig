@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products list{% endblock %}
+
+{% block body %}
+    <h2 class="header-page">Sales</h2>
+    {% for product in products %}
+        {{ include('product/_templates/product.html.twig') }}
+    {% endfor %}
+    {{ include('product/_templates/links_in_list.html.twig') }}
+{% endblock %}

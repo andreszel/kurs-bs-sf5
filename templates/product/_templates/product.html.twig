@@ -1,0 +1,11 @@
+<div class="product">
+    <h5>{{ product.name }} <small>[{{ product.id }}] {% if product.category %}<span>Category: {{ product.category }}</span>{% endif %}</small></h5>
+    <p>{{ product.description }}</p>
+    <p class="price-status-ean">
+        <span>Price: {{ product.price }} PLN</span>
+        <span>Active: {% if product.active %}TAK{% else %}NIE{% endif %}</span>
+        <span>EAN: {{ product.ean }}</span>
+        <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary btn-sm">show</a>
+        <a href="{{ path('app_product_delete', {'id': product.id}) }}" class="btn btn-danger btn-sm">delete</a>
+    </p>
+</div>

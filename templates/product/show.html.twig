@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product show{% endblock %}
+
+{% block body %}
+    <h2 class="header-page">Product details</h2>
+    {{ include('product/_templates/product.html.twig') }}
+    {{ include('product/_templates/links_in_list.html.twig') }}
+{% endblock %}
