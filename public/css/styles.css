@@ -2,7 +2,8 @@ body {
     background-color: antiquewhite;
 }
 .example-img {
-    width: 70vw;
+    width: 30vw;
+    margin: 0 auto;
 }
 .header-page {
     margin: 25px 0;

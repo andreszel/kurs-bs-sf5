@@ -24,14 +24,14 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?CategoryPost $categoryPost = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -98,18 +98,6 @@ class Post
         return $this;
     }
 
-    #[ORM\PrePersist]
-    public function setCreatedAtValue(): void
-    {
-        $this->createdAt = new \DateTimeImmutable();
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdatedAtValue(): void
-    {
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -120,5 +108,17 @@ class Post
         $this->slug = $slug;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }
