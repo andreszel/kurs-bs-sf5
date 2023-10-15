@@ -3,6 +3,7 @@ parameters:
 
 twig:
     default_path: '%kernel.project_dir%/%default_folder%'
+    form_themes: ['bootstrap_5_layout.html.twig']
 
 when@test:
     twig:

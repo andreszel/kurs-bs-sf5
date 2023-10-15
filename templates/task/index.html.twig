@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TaskController!{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <a href="{{ path('app_task_new') }}">Nowy task</a>
+
+    {% if tasks %}
+        <ol>
+            {% for task in tasks %}
+                <li class="{{ task.important ? 'important text-info' : '' }}">
+                    {{ task.task }}
+                    - {{ task.dueDate|date("Y-m-d") }}
+                    {% if task.user %}
+                        - <span>[{{ task.user }}]</span>
+                    {% endif %}
+                    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h3>Lista jest pusta!</h3>
+    {% endif %}
+{% endblock %}

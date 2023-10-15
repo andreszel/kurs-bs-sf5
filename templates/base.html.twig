@@ -20,7 +20,7 @@
     </head>
     <body>
         <div class="container">
-            <ul class="nav justify-content-center">
+            <ul class="nav justify-content-center mb-4">
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_home') }}">Homepage</a></li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_product') }}">Product</a></li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_post') }}">Post</a></li>
@@ -29,6 +29,7 @@
                 {% endif %}
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_profile') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_task') }}">Task</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_logout') }}">Logout</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ path('app_register') }}">Register</a></li>

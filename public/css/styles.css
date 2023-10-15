@@ -62,3 +62,16 @@ body {
     gap: 10px;
     justify-content: flex-end;
 }
+.container-register {
+    margin-top: 40px;
+    width: 100%;
+    border: 1px solid #000;
+}
+.form-register{
+    display:block;
+    width:480px;
+    margin:0 auto;
+    border: ridge 1.5px white;
+    padding: 20px;
+    background-color: rgb(255, 233, 204);
+}
