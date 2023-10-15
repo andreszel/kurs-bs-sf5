@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Service\ContactMailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, ContactMailer $contactMailer): Response
     {
         $form = $this->createForm(ContactType::class);
 
@@ -25,30 +26,8 @@ class ContactController extends AbstractController
         {
             $contact = $form->getData();
 
-            $emailAdmin = (new TemplatedEmail())
-                ->from(new Address('notify@kursbs.pl', 'BeeS'))
-                ->to('szelkaandrzej@gmail.com')
-                ->subject("Notify form Kurs BS")
-                ->htmlTemplate('emails/contact-admin.html.twig')
-                ->context([
-                    'name' => $contact->getName(),
-                    'emailAddress' => $contact->getEmail(),
-                    'subject' => $contact->getSubject(),
-                    'message' => $contact->getMessage()
-                ]);
-
-            $mailer->send($emailAdmin);
-
-            $emailUser = (new TemplatedEmail())
-                ->from(new Address('notify@kursbs.pl', 'BeeS'))
-                ->to($contact->getEmail())
-                ->subject("Notify form Kurs BS")
-                ->htmlTemplate('emails/contact-user.html.twig')
-                ->context([
-                    'name' => $contact->getName(),
-                    'emailAddress' => $contact->getEmail(),
-                ]);
-            $mailer->send($emailUser);
+            $contactMailer->sendMessageToAdmin($this->getParameter('adminEmail'), "Nowa wiadomość z formularza kontaktowego", $contact);
+            $contactMailer->sendMessageToUser($contact->getEmail(), "Powiadomienie z Kurs BS SF5", $contact);
 
             $entityManager->persist($contact);
             $entityManager->flush();
