@@ -21,11 +21,11 @@ class ContactMailer
         $this->adminName = $adminName;
     }
 
-    public function sendMessageToAdmin(string $to, string $subject, Contact $contact): void
+    public function sendMessageToAdmin(string $subject, Contact $contact): void
     {
         $email = (new TemplatedEmail())
             ->from(new Address($this->adminEmail, $this->adminName))
-            ->to($to)
+            ->to($this->adminEmail)
             ->subject($subject)
             ->htmlTemplate('emails/contact-admin.html.twig')
             ->context([
