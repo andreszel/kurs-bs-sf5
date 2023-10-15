@@ -34,7 +34,8 @@ class TaskController extends AbstractController
         $form = $this->createForm(TaskType::class);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid())
+        {
             $task = $form->getData();
             
             // get value field no mapped, above not found it in $task, because no mapped
@@ -60,7 +61,8 @@ class TaskController extends AbstractController
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid())
+        {
             $task = $form->getData();
 
             // get value field no mapped, above not found it in $task, because no mapped
