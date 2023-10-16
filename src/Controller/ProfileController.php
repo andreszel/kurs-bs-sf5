@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/admin')]
 class ProfileController extends AbstractController
 {
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/profile', name: 'app_admin_profile')]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -18,7 +19,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/edit', name: 'app_profile_edit')]
+    #[Route('/profile/edit', name: 'app_admin_profile_edit')]
     public function edit(): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');

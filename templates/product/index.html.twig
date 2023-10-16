@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Products{% endblock %}
+{% block title %}Products list{% endblock %}
 
 {% block body %}
-    <h2 class="header-page">Products index</h2>
+    {{ parent() }}
+    <h2 class="header-page">Lista produktów</h2>
+    <a href="{{ path('app_admin_product_new') }}">Dodaj nowy produkt</a>
+    {% for product in products %}
+        {{ include('product/_templates/product.html.twig') }}
+    {% endfor %}
     {{ include('product/_templates/links_in_list.html.twig') }}
 {% endblock %}

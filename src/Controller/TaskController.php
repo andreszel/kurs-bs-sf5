@@ -11,12 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/admin/task')]
 class TaskController extends AbstractController
 {
     public function __construct(private TaskRepository $taskRepository) {
     }
 
-    #[Route('/task', name: 'app_task')]
+    #[Route('/', name: 'app_admin_task')]
     public function index(): Response
     {
         $tasks = $this->taskRepository->findAll();
@@ -26,7 +27,7 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/task/new', name: 'app_task_new')]
+    #[Route('/new', name: 'app_admin_task_new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         //$task = new Task();
@@ -47,7 +48,7 @@ class TaskController extends AbstractController
 
             $this->addFlash('success', 'You task has benn saved.');
 
-            return $this->redirectToRoute('app_task');
+            return $this->redirectToRoute('app_admin_task');
         }
 
         return $this->renderForm('task/new.html.twig', [
@@ -55,7 +56,7 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/task/edit/{id}', name: 'app_task_edit')]
+    #[Route('/edit/{id}', name: 'app_admin_task_edit')]
     public function edit(Task $task, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(TaskType::class, $task);
@@ -73,7 +74,7 @@ class TaskController extends AbstractController
 
             $this->addFlash('success', 'You task has benn updated.');
 
-            return $this->redirectToRoute('app_task');
+            return $this->redirectToRoute('app_admin_task');
         }
 
         return $this->renderForm('task/edit.html.twig', [

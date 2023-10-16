@@ -4,6 +4,7 @@
 
 {% block body %}
     <h2 class="header-page">Products list</h2>
+    <a href="{{ path('app_admin_product_new') }}">Dodaj nowy produkt</a>
     {% for product in products %}
         {{ include('product/_templates/product.html.twig') }}
     {% endfor %}

@@ -28,7 +28,9 @@ class ContactType extends AbstractType
                 'label' => 'Treść wiadomości',
                 'help' => 'Opisz swój problem'
             ])
-            ->add('send', SubmitType::class)
+            ->add('send', SubmitType::class, [
+                'label' => 'Wyślij'
+            ])
         ;
     }
 

@@ -30,7 +30,7 @@ class ContactController extends AbstractController
 
             $this->addFlash('success', 'Form has benn send. Tank for your message.');
 
-            $this->redirectToRoute('app_contact');
+            return $this->redirectToRoute('app_contact');
         }
 
         return $this->render('contact/index.html.twig', [

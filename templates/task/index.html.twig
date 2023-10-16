@@ -4,7 +4,7 @@
 
 {% block body %}
     {{ parent() }}
-    <a href="{{ path('app_task_new') }}">Nowy task</a>
+    <a href="{{ path('app_admin_task_new') }}">Nowy task</a>
 
     {% if tasks %}
         <ol>
@@ -15,7 +15,7 @@
                     {% if task.user %}
                         - <span>[{{ task.user }}]</span>
                     {% endif %}
-                    <a href="{{ path('app_task_edit', {'id': task.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_task_edit', {'id': task.id}) }}">edit</a>
                 </li>
             {% endfor %}
         </ol>

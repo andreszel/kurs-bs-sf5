@@ -5,7 +5,8 @@
         <span>Price: {{ product.price }} PLN</span>
         <span>Active: {% if product.active %}TAK{% else %}NIE{% endif %}</span>
         <span>EAN: {{ product.ean }}</span>
-        <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary btn-sm">show</a>
-        <a href="{{ path('app_product_delete', {'id': product.id}) }}" class="btn btn-danger btn-sm">delete</a>
+        <a href="{{ path('app_admin_product_show', {'id': product.id}) }}" class="btn btn-primary btn-sm">show</a>
+        <a href="{{ path('app_admin_product_edit', {'id': product.id}) }}" class="btn btn-primary btn-sm">edit</a>
+        <a href="{{ path('app_admin_product_delete', {'id': product.id}) }}" class="btn btn-danger btn-sm">delete</a>
     </p>
 </div>
