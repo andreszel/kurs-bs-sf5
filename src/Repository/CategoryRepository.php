@@ -21,6 +21,27 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
+    public function findRandomCategory(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM category
+            WHERE true
+            ORDER BY RAND()
+            LIMIT 1
+        ';
+
+        $resultSet = $conn->executeQuery($sql)->fetchAssociative();
+
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.id = :id')
+            ->setParameter('id', $resultSet['id']);
+        $query = $qb->getQuery();
+
+        return $query->execute();
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */
